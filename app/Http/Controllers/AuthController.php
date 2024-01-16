@@ -30,8 +30,13 @@ class AuthController extends Controller
             Session::put("token", $login->data->token);
 
             // Get Toko
-            $toko = $this->hitApiService->GET('api/toko/user/'.$login->data->id, []);
-            Session::put('toko', $toko->data[0]);
+            if ($login->data->role == "owner") {
+                $toko = $this->hitApiService->GET('api/toko/user/'.$login->data->id, []);
+                Session::put('toko', $toko->data[0]);
+            } else {
+                $toko = $this->hitApiService->GET('api/toko/pegawai/'.$login->data->id, []);
+                Session::put('toko', $toko->data->toko);
+            }
 
             return redirect()->action([DashboardController::class, 'index']);
         } else {

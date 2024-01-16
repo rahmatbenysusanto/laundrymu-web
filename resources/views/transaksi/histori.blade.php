@@ -44,7 +44,7 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td>
-                                                <a href="#">{{ $tra->order_number }}</a>
+                                                <a href="/lihat-transaksi/{{ $tra->order_number }}">{{ $tra->order_number }}</a>
                                             </td>
                                             <td>{{ $tra->pelanggan->nama }} | {{ $tra->pelanggan->no_hp }}</td>
                                             <td>{{ $tra->pembayaran->nama }}</td>

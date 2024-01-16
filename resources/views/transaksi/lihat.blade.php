@@ -105,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title mb-0">List Layanan</h5>
@@ -131,6 +131,58 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Histori Status</h5>
+                            </div>
+                            <div class="card-body">
+                                @foreach($histori as $his)
+                                    @if($his->status == "baru")
+                                        <div class="card p-2">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset('assets/images/baru.svg') }}" alt="...">
+                                                <div class="ms-3">
+                                                    <p class="fw-bold">Laundry Baru, {{ tanggal_jam_indo($his->created_at) }}</p>
+                                                    <p>{{ $his->keterangan }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @elseif($his->status == "diproses")
+                                        <div class="card p-2">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset('assets/images/diproses.svg') }}" alt="...">
+                                                <div class="ms-3">
+                                                    <p class="fw-bold">Laundry Diproses, {{ tanggal_jam_indo($his->created_at) }}</p>
+                                                    <p>{{ $his->keterangan }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @elseif($his->status == "selesai")
+                                        <div class="card p-2">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset('assets/images/selesai.svg') }}" alt="...">
+                                                <div class="ms-3">
+                                                    <p class="fw-bold">Laundry Selesai, {{ tanggal_jam_indo($his->created_at) }}</p>
+                                                    <p>{{ $his->keterangan }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="card p-2">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset('assets/images/diambil.svg') }}" alt="...">
+                                                <div class="ms-3">
+                                                    <p class="fw-bold">Laundry Diambil, {{ tanggal_jam_indo($his->created_at) }}</p>
+                                                    <p>{{ $his->keterangan }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>

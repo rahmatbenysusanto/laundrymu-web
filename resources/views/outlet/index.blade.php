@@ -44,7 +44,13 @@
                                                 <td>{{ $out->nama }}</td>
                                                 <td>{{ $out->no_hp }}</td>
                                                 <td>{{ $out->alamat }}</td>
-                                                <td>{{ $out->status }}</td>
+                                                <td>
+                                                    @if($out->status == "active")
+                                                        <span class="badge badge-soft-success">Aktif</span>
+                                                    @else
+                                                        <span class="badge badge-soft-danger">Non Aktif</span>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $out->expired }}</td>
                                                 <td>
                                                     @if(Session::get('toko')->id === $out->id)
@@ -67,8 +73,18 @@
                                                                 </li>
                                                             @endif
                                                             <li>
-                                                                <a href="" class="dropdown-item">
+                                                                <a href="/lihat-outlet/{{ base64_encode($out->id) }}" class="dropdown-item">
                                                                     <i class="ri-eye-fill align-bottom me-2 text-muted"></i> Lihat
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/perpanjang-lisensi-outlet/{{ base64_encode($out->id) }}" class="dropdown-item">
+                                                                    <i class="ri-calendar-event-fill align-bottom me-2 text-muted"></i> Perpanjang Lisensi
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item edit-item-btn">
+                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Histori Pembayaran
                                                                 </a>
                                                             </li>
                                                             <li>

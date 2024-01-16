@@ -21,6 +21,7 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
     Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
         Route::controller(\App\Http\Controllers\DashboardController::class)->group(function () {
             Route::get('/dashboard', 'index')->name('dashboard');
+            Route::get('/get-chart-dashboard', 'getChartDashboard')->name('getChartDashboard');
         });
 
         Route::controller(\App\Http\Controllers\LayananController::class)->group(function () {
@@ -54,6 +55,8 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
         Route::controller(\App\Http\Controllers\OutletController::class)->group(function () {
             Route::get('/outlet', 'index')->name('outlet');
             Route::get('/gunakan-outlet', 'gunakanOutlet')->name('gunakanOutlet');
+            Route::get('/lihat-outlet/{id}', 'lihatOutlet');
+            Route::get('/perpanjang-lisensi-outlet/{id}', 'perpanjangLisensi');
         });
 
         Route::controller(\App\Http\Controllers\TransaksiController::class)->group(function () {
@@ -61,6 +64,7 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
             Route::get('/list-transaksi', 'listTransaksi')->name('listTransaksi');
             Route::get('/histori-transaksi', 'historiTransaksi')->name('historiTransaksi');
             Route::get('/lihat-transaksi/{orderNumber}', 'lihatTransaksi');
+            Route::get('/proses-transaksi/{orderNumber}/{status}', 'prosesTransaksi')->name('prosesTransaksi');
             Route::post('/create-transaksi', 'createTransaksi')->name('createTransaksi');
             Route::get('/cetak-struk/{transaksi_id}', 'cetakStruk')->name('cetakNotaTransaksi');
         });

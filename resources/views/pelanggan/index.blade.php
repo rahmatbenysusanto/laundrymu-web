@@ -31,6 +31,8 @@
                                         <th>#</th>
                                         <th>Nama Pelanggan</th>
                                         <th>No HP</th>
+                                        <th>Total Transaksi</th>
+                                        <th>Transaksi Bulanan</th>
                                         <th>Pilihan</th>
                                     </tr>
                                     </thead>
@@ -40,6 +42,8 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $pel->nama }}</td>
                                                 <td>{{ $pel->no_hp }}</td>
+                                                <td class="text-center">{{ $pel->pelanggan_has_transaksi->jumlah_transaksi }}</td>
+                                                <td class="text-center">{{ $pel->pelanggan_has_transaksi->jumlah_transaksi_bulanan }}</td>
                                                 <td>
                                                     <div class="dropdown d-inline-block">
                                                         <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">

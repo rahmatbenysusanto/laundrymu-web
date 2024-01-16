@@ -35,4 +35,30 @@ class OutletController extends Controller
            'status' => true
         ]);
     }
+
+    public function lihatOutlet($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    {
+        $dataToko = $this->hitApiService->GET('api/toko/'.(int)base64_decode($id), []);
+        if (isset($dataToko) && $dataToko->status) {
+            $toko = $dataToko->data;
+            $title = "outlet";
+            return view('outlet.lihat', compact('title', 'toko'));
+        } else {
+            Session::flash('error', 'Outlet tidak ditemukan');
+            return back();
+        }
+    }
+
+    function perpanjangLisensi($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    {
+        $dataToko = $this->hitApiService->GET('api/toko/'.(int)base64_decode($id), []);
+        if (isset($dataToko) && $dataToko->status) {
+            $toko = $dataToko->data;
+            $title = "outlet";
+            return view('outlet.masa_aktif', compact('title', 'toko'));
+        } else {
+            Session::flash('error', 'Outlet tidak ditemukan');
+            return back();
+        }
+    }
 }

@@ -8,6 +8,86 @@
 
                         <div class="h-100">
                             <div class="row">
+                                <div class="col-4">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Laundry Baru</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="{{ $statusTransaksi->baru ?? 0 }}">0</span></h4>
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title bg-primary-subtle rounded fs-3">
+                                                        <i class="bx bx-party text-primary"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-primary opacity-25 fs-18">
+                                            <i class="bx bx-party"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-primary opacity-25 fs-18">
+                                            <i class="bx bx-party"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-primary opacity-25 fs-18">
+                                            <i class="bx bx-party"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Laundry DiProses</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="{{ $statusTransaksi->diproses ?? 0 }}">0</span></h4>
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title bg-info-subtle rounded fs-3">
+                                                        <i class="bx bxs-washer text-info"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-info opacity-25 fs-18">
+                                            <i class="bx bxs-washer"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-info opacity-25 fs-18">
+                                            <i class="bx bxs-washer"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-info opacity-25 fs-18">
+                                            <i class="bx bxs-washer"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card card-animate">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Laundry Selesai</p>
+                                                    <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="{{ $statusTransaksi->selesai ?? 0 }}">0</span></h4>
+                                                </div>
+                                                <div class="avatar-sm flex-shrink-0">
+                                                    <span class="avatar-title bg-success-subtle rounded fs-3">
+                                                        <i class="bx bxs-box text-success"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card body -->
+                                        <div class="animation-effect-6 text-success opacity-25 fs-18">
+                                            <i class="bx bxs-box"></i>
+                                        </div>
+                                        <div class="animation-effect-4 text-success opacity-25 fs-18">
+                                            <i class="bx bxs-box"></i>
+                                        </div>
+                                        <div class="animation-effect-3 text-success opacity-25 fs-18">
+                                            <i class="bx bxs-box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-xl-4">
                                     <div class="row">
                                         <div class="col-xl-12 col-md-6">
@@ -16,19 +96,16 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between">
                                                         <div class="flex-grow-1">
-                                                            <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Total Earnings</p>
-                                                            <h4 class="fs-22 fw-semibold mb-3">$<span class="counter-value" data-target="745.35">0</span></h4>
+                                                            <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Pendapatan Bulanan</p>
+                                                            <h4 class="fs-22 fw-semibold mb-3">Rp. <span class="counter-value" data-target="{{ $nominalTransaksi->nominal_transaksi }}">0</span></h4>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <h5 class="text-success fs-12 mb-0">
-                                                                    <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +18.30 %
-                                                                </h5>
-                                                                <p class="text-muted mb-0">than last week</p>
+                                                                <p class="text-muted mb-0">Pendapatan Bulan {{ getBulan() }}</p>
                                                             </div>
                                                         </div>
                                                         <div class="avatar-sm flex-shrink-0">
-                                                                    <span class="avatar-title bg-success-subtle rounded fs-3">
-                                                                        <i class="bx bx-dollar-circle text-success"></i>
-                                                                    </span>
+                                                            <span class="avatar-title bg-success-subtle rounded fs-3">
+                                                                <i class="bx bx-dollar-circle text-success"></i>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div><!-- end card body -->
@@ -55,13 +132,10 @@
                                                                     </span>
                                                         </div>
                                                         <div class="text-end flex-grow-1">
-                                                            <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Orders</p>
-                                                            <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="698.36">0</span>k </h4>
+                                                            <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Jumlah Transaksi</p>
+                                                            <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="{{ $transaksiHarian->jumlah }}">0</span></h4>
                                                             <div class="d-flex align-items-center justify-content-end gap-2">
-                                                                <h5 class="text-danger fs-12 mb-0">
-                                                                    <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -2.74 %
-                                                                </h5>
-                                                                <p class="text-muted mb-0">than last week</p>
+                                                                <p class="text-muted mb-0">Jumlah Transaksi Perhari</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -84,13 +158,10 @@
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between">
                                                         <div class="flex-grow-1">
-                                                            <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Customers</p>
-                                                            <h4 class="fs-22 fw-semibold mb-3"><span class="counter-value" data-target="183.35">0</span>M </h4>
+                                                            <p class="text-uppercase fw-medium text-muted text-truncate fs-13">Pendapatan Harian</p>
+                                                            <h4 class="fs-22 fw-semibold mb-3">Rp. <span class="counter-value" data-target="{{ $transaksiHarian->nominal }}">0</span></h4>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <h5 class="text-success fs-12 mb-0">
-                                                                    <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +29.08 %
-                                                                </h5>
-                                                                <p class="text-muted mb-0">than last week</p>
+                                                                <p class="text-muted mb-0">Pendapatan Laundry Harian</p>
                                                             </div>
                                                         </div>
                                                         <div class="avatar-sm flex-shrink-0">
@@ -116,50 +187,33 @@
                                 <div class="col-xl-8">
                                     <div class="card">
                                         <div class="card-header border-0 align-items-center d-flex">
-                                            <h4 class="card-title mb-0 flex-grow-1">Revenue</h4>
+                                            <h4 class="card-title mb-0 flex-grow-1">Pendapatan</h4>
                                             <div>
                                                 <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                    ALL
+                                                    1 Minggu
                                                 </button>
                                                 <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                    1M
-                                                </button>
-                                                <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                    6M
+                                                    1 Bulan
                                                 </button>
                                                 <button type="button" class="btn btn-secondary btn-sm">
-                                                    1Y
+                                                    1 Tahun
                                                 </button>
                                             </div>
                                         </div><!-- end card header -->
 
                                         <div class="card-header p-0 border-0 bg-soft-light">
                                             <div class="row g-0 text-center">
-                                                <div class="col-6 col-sm-3">
+                                                <div class="col-6 col-sm-6">
                                                     <div class="p-3 border border-dashed border-start-0">
-                                                        <h5 class="mb-1"><span class="counter-value" data-target="7585">0</span></h5>
-                                                        <p class="text-muted mb-0">Orders</p>
+                                                        <h5 class="mb-1" id="nominalTransaksi">0</h5>
+                                                        <p class="text-muted mb-0">Nominal Transaksi</p>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
-                                                <div class="col-6 col-sm-3">
+                                                <div class="col-6 col-sm-6">
                                                     <div class="p-3 border border-dashed border-start-0">
-                                                        <h5 class="mb-1">$<span class="counter-value" data-target="22.89">0</span>k</h5>
-                                                        <p class="text-muted mb-0">Earnings</p>
-                                                    </div>
-                                                </div>
-                                                <!--end col-->
-                                                <div class="col-6 col-sm-3">
-                                                    <div class="p-3 border border-dashed border-start-0">
-                                                        <h5 class="mb-1"><span class="counter-value" data-target="367">0</span></h5>
-                                                        <p class="text-muted mb-0">Refunds</p>
-                                                    </div>
-                                                </div>
-                                                <!--end col-->
-                                                <div class="col-6 col-sm-3">
-                                                    <div class="p-3 border border-dashed border-start-0 border-end-0">
-                                                        <h5 class="mb-1 text-success"><span class="counter-value" data-target="18.92">0</span>%</h5>
-                                                        <p class="text-muted mb-0">Conversation Ratio</p>
+                                                        <h5 class="mb-1" id="jumlahTransaksi">0</h5>
+                                                        <p class="text-muted mb-0">Jumlah Transaksi</p>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
@@ -182,11 +236,11 @@
                                         <div class="card-body">
                                             <div class="row gy-3">
                                                 <div class="col-sm">
-                                                    <h5 class="card-title fs-17">Need More Sales?</h5>
-                                                    <p class="mb-0">Upgrade to pro for added benefits.</p>
+                                                    <h5 class="card-title fs-17">{{ Session::get('toko')->nama }}</h5>
+                                                    <p class="mb-0">Outlet aktif sampai : {{ tanggal_indo(Session::get('toko')->expired) }}</p>
                                                 </div>
                                                 <div class="col-sm-auto">
-                                                    <button type="button" class="btn btn-info btn-label rounded-pill"><i class="ri-markup-line label-icon align-middle rounded-pill fs-16 me-2"></i> Upgrade Account</button>
+                                                    <button type="button" class="btn btn-info btn-label rounded-pill"><i class="ri-markup-line label-icon align-middle rounded-pill fs-16 me-2"></i> Perpanjang Lisensi Outlet</button>
                                                 </div>
                                             </div>
                                             <div class="position-absolute top-0 start-50 mt-2 opacity-25">
@@ -201,620 +255,41 @@
                                 <div class="col-xl-12">
                                     <div class="card">
                                         <div class="card-header align-items-center d-flex">
-                                            <h4 class="card-title mb-0 flex-grow-1">Recent Orders</h4>
-                                            <div class="flex-shrink-0">
-                                                <div class="dropdown card-header-dropdown">
-                                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <span class="fw-semibold text-uppercase fs-12">Sort by:
-                                                                </span><span class="text-muted">Today<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Today</a>
-                                                        <a class="dropdown-item" href="#">Yesterday</a>
-                                                        <a class="dropdown-item" href="#">Last 7 Days</a>
-                                                        <a class="dropdown-item" href="#">Last 30 Days</a>
-                                                        <a class="dropdown-item" href="#">This Month</a>
-                                                        <a class="dropdown-item" href="#">Last Month</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- end card header -->
+                                            <h4 class="card-title mb-0 flex-grow-1">Top Pelanggan Bulan {{ getBulan() }}</h4>
+                                        </div>
 
                                         <div class="card-body">
                                             <div class="table-responsive table-card">
                                                 <table class="table table-centered align-middle table-nowrap mb-0">
                                                     <thead class="text-muted table-light">
                                                     <tr>
-                                                        <th scope="col">Purchase ID</th>
-                                                        <th scope="col">Customer Name</th>
-                                                        <th scope="col">Product Name</th>
-                                                        <th scope="col">Amount</th>
-                                                        <th scope="col">OrderDate</th>
-                                                        <th scope="col">Vendor</th>
-                                                        <th scope="col">Status</th>
+                                                        <th>#</th>
+                                                        <th>Nama</th>
+                                                        <th>No HP</th>
+                                                        <th class="text-center">Total Transaksi</th>
+                                                        <th>Total Nominal Transaksi</th>
+                                                        <th class="text-center">Transaksi Bulanan</th>
+                                                        <th>Nominal Bulanan</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#TB010331</a>
-                                                        </td>
-                                                        <td>
-                                                            Macbook Pro
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Terry White</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            $658.00
-                                                        </td>
-                                                        <td>28 Oct, 2022</td>
-                                                        <td>Brazil</td>
-                                                        <td>
-                                                            <span class="badge badge-soft-success">Paid</span>
-                                                        </td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#TB010332</a>
-                                                        </td>
-                                                        <td>
-                                                            Borosil Paper Cup
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/users/avatar-4.jpg" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Daniel Gonzalez</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            $345.00
-                                                        </td>
-                                                        <td>29 Oct, 2022</td>
-                                                        <td>Namibia</td>
-                                                        <td>
-                                                            <span class="badge badge-soft-danger">Unpaid</span>
-                                                        </td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#TB010333</a>
-                                                        </td>
-                                                        <td>
-                                                            Stillbird Helmet
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Stephen Bird</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            $80.00
-                                                        </td>
-                                                        <td>30 Oct, 2022</td>
-                                                        <td>USA</td>
-                                                        <td>
-                                                            <span class="badge badge-soft-success">Paid</span>
-                                                        </td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#TB010334</a>
-                                                        </td>
-                                                        <td>
-                                                            Bentwood Chair
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/users/avatar-10.jpg" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Ashley Silva</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            $349.99
-                                                        </td>
-                                                        <td>31 Oct, 2022</td>
-                                                        <td>Argentina</td>
-                                                        <td>
-                                                            <span class="badge badge-soft-warning">Pending</span>
-                                                        </td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#TB010335</a>
-                                                        </td>
-                                                        <td>
-                                                            Apple Headphone
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/users/avatar-9.jpg" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Scott Wilson</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            $264.37
-                                                        </td>
-                                                        <td>01 Nov, 2022</td>
-                                                        <td>Jersey</td>
-                                                        <td>
-                                                            <span class="badge badge-soft-danger">Unpaid</span>
-                                                        </td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#TB010336</a>
-                                                        </td>
-                                                        <td>
-                                                            Smart Watch for Man's
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/users/avatar-8.jpg" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Heather Jimenez</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            $741.98
-                                                        </td>
-                                                        <td>02 Nov, 2022</td>
-                                                        <td>Spain</td>
-                                                        <td>
-                                                            <span class="badge badge-soft-success">Paid</span>
-                                                        </td>
-                                                    </tr><!-- end tr -->
+                                                        @foreach($pelanggan as $pel)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>{{ $pel->nama }}</td>
+                                                                <td>{{ $pel->no_hp }}</td>
+                                                                <td class="text-center">{{ $pel->jumlah_transaksi }}</td>
+                                                                <td>@currency($pel->nominal_transaksi)</td>
+                                                                <td class="text-center">{{ $pel->jumlah_transaksi_bulanan }}</td>
+                                                                <td>@currency($pel->nominal_transaksi_bulanan)</td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="row align-items-center mt-4 pt-2 gy-2 text-center text-sm-start">
-                                                <div class="col-sm">
-                                                    <div class="text-muted">
-                                                        Showing <span class="fw-semibold">6</span> of <span class="fw-semibold">25</span> Results
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-auto">
-                                                    <ul class="pagination pagination-separated pagination-sm mb-0 justify-content-center justify-content-sm-start">
-                                                        <li class="page-item disabled">
-                                                            <a href="#" class="page-link">←</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="#" class="page-link">1</a>
-                                                        </li>
-                                                        <li class="page-item active">
-                                                            <a href="#" class="page-link">2</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="#" class="page-link">3</a>
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <a href="#" class="page-link">→</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xl-8">
-                                    <div class="swiper selling-product">
-                                        <div class="d-flex pt-2 pb-4">
-                                            <h5 class="card-title fs-16 mb-1">Best Selling Products</h5>
-                                        </div>
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide" style="max-width: 280px;">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="bg-info-subtle rounded py-3">
-                                                            <img src="assets/images/products/img-1.png" alt="" style="max-height: 215px;max-width: 100%;" class="mx-auto d-block">
-                                                        </div>
-                                                        <div class="pt-3">
-                                                            <span class="float-end">4.7 <i class="ri-star-half-fill text-warning align-bottom"></i></span>
-                                                            <h5 class="text-dark mb-3">$64.21</h5>
-                                                            <a href="#!" class="stretched-link">
-                                                                <h6 class="fs-15 lh-base text-truncate mb-0">Rockerz 550 Over Ear Bluetooth Headphones</h6>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide" style="max-width: 280px;">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="bg-warning-subtle rounded py-3">
-                                                            <img src="assets/images/products/img-6.png" alt="" style="max-height: 215px;max-width: 100%;" class="mx-auto d-block">
-                                                        </div>
-                                                        <div class="pt-3">
-                                                            <span class="float-end">4.9 <i class="ri-star-half-fill text-warning align-bottom"></i></span>
-                                                            <h5 class="text-dark mb-3">$154.78</h5>
-                                                            <a href="#!" class="stretched-link">
-                                                                <h6 class="fs-15 lh-base text-truncate mb-0">Monte Carlo Sweaters</h6>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide" style="max-width: 280px;">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="bg-primary-subtle rounded py-3">
-                                                            <img src="assets/images/products/img-8.png" alt="" style="max-height: 215px;max-width: 100%;" class="mx-auto d-block">
-                                                        </div>
-                                                        <div class="pt-3">
-                                                            <span class="float-end">4.3 <i class="ri-star-half-fill text-warning align-bottom"></i></span>
-                                                            <h5 class="text-dark mb-3">$36.97</h5>
-                                                            <a href="#!" class="stretched-link">
-                                                                <h6 class="fs-15 lh-base text-truncate mb-0">Men's Running Shoes Active Grip</h6>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide" style="max-width: 280px;">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="bg-success-subtle rounded py-3">
-                                                            <img src="assets/images/products/img-5.png" alt="" style="max-height: 215px;max-width: 100%;" class="mx-auto d-block">
-                                                        </div>
-                                                        <div class="pt-3">
-                                                            <span class="float-end">4.8 <i class="ri-star-half-fill text-warning align-bottom"></i></span>
-                                                            <h5 class="text-dark mb-3">$71.34</h5>
-                                                            <a href="#!" class="stretched-link">
-                                                                <h6 class="fs-15 lh-base text-truncate mb-0">United Colors Of Benetton</h6>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-button-next"></div>
-                                        <div class="swiper-button-prev"></div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4">
-                                    <div class="card">
-                                        <div class="card-header d-flex">
-                                            <h5 class="card-title flex-grow-1 mb-0">Product Delivery</h5>
-                                            <a href="#!" class="flex-shrink-0">View All <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
-                                        </div>
-                                        <div class="card-body px-0">
-                                            <div data-simplebar style="max-height: 320px;">
-                                                <div class="vstack gap-3 px-3">
-                                                    <div class="p-3 border border-dashed rounded-3">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="avatar-sm bg-light rounded p-1 flex-shrink-0">
-                                                                <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block">
-                                                            </div>
-                                                            <div class="flex-grow-1 overflow-hidden">
-                                                                <h6 class="text-truncate">Men's Running Shoes Activ... </h6>
-                                                                <p class="text-truncate mb-0">by: <span class="text-info">Aaron Bauer</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <span class="badge badge-soft-warning">Shipping</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="p-3 border border-dashed rounded-3">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="avatar-sm bg-light rounded p-1 flex-shrink-0">
-                                                                <img src="assets/images/products/img-4.png" alt="" class="img-fluid d-block">
-                                                            </div>
-                                                            <div class="flex-grow-1 overflow-hidden">
-                                                                <h6 class="text-truncate">Striped Baseball Cap</h6>
-                                                                <p class="text-truncate mb-0">by: <span class="text-info">Jansh Brown</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <span class="badge badge-soft-success">Delivered</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="p-3 border border-dashed rounded-3">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="avatar-sm bg-light rounded p-1 flex-shrink-0">
-                                                                <img src="assets/images/products/img-3.png" alt="" class="img-fluid d-block">
-                                                            </div>
-                                                            <div class="flex-grow-1 overflow-hidden">
-                                                                <h6 class="text-truncate">350 ml Glass Groce...</h6>
-                                                                <p class="text-truncate mb-0">by: <span class="text-info">Scott Wilson</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <span class="badge badge-soft-danger">Out of Delivery</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="p-3 border border-dashed rounded-3">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="avatar-sm bg-light rounded p-1 flex-shrink-0">
-                                                                <img src="assets/images/products/img-6.png" alt="" class="img-fluid d-block">
-                                                            </div>
-                                                            <div class="flex-grow-1 overflow-hidden">
-                                                                <h6 class="text-truncate">Monte Carlo Sweaters</h6>
-                                                                <p class="text-truncate mb-0">by: <span class="text-info">Daniel Gonzalez</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <span class="badge badge-soft-success">Delivered</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="p-3 border border-dashed rounded-3">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="avatar-sm bg-light rounded p-1 flex-shrink-0">
-                                                                <img src="assets/images/products/img-9.png" alt="" class="img-fluid d-block">
-                                                            </div>
-                                                            <div class="flex-grow-1 overflow-hidden">
-                                                                <h6 class="text-truncate">Ceramic Coffee Mug</h6>
-                                                                <p class="text-truncate mb-0">by: <span class="text-info">Stephen Garrison</span></p>
-                                                            </div>
-                                                            <div class="flex-shrink-0">
-                                                                <span class="badge badge-soft-warning">Shipping</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- end row-->
-
-                            <div class="row">
-                                <div class="col-xl-4">
-                                    <div class="card card-height-100">
-                                        <div class="card-header align-items-center d-flex">
-                                            <h4 class="card-title mb-0 flex-grow-1">Sales by Category</h4>
-                                            <div class="flex-shrink-0">
-                                                <div class="dropdown card-header-dropdown">
-                                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Download Report</a>
-                                                        <a class="dropdown-item" href="#">Export</a>
-                                                        <a class="dropdown-item" href="#">Import</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- end card header -->
-
-                                        <div class="card-body">
-                                            <div id="multiple_radialbar" data-colors='["--tb-primary", "--tb-info", "--tb-success", "--tb-secondary"]' class="apex-charts" dir="ltr"></div>
-                                        </div>
-                                    </div> <!-- .card-->
-                                </div> <!-- .col-->
-
-                                <div class="col-xl-8">
-                                    <div class="card">
-                                        <div class="card-header align-items-center d-flex">
-                                            <h4 class="card-title mb-0 flex-grow-1">Stock Report</h4>
-                                            <div class="flex-shrink-0">
-                                                <button type="button" class="btn btn-soft-info btn-sm">
-                                                    <i class="ri-file-list-3-line align-middle"></i> Generate Report
-                                                </button>
-                                            </div>
-                                        </div><!-- end card header -->
-
-                                        <div class="card-body">
-                                            <div class="table-responsive table-card">
-                                                <table class="table table-borderless table-centered table-hover align-middle table-nowrap mb-0">
-                                                    <thead class="text-muted table-light">
-                                                    <tr>
-                                                        <th scope="col">Product ID</th>
-                                                        <th scope="col">Product Name</th>
-                                                        <th scope="col">Updated Date</th>
-                                                        <th scope="col">Amount</th>
-                                                        <th scope="col">Stock Status</th>
-                                                        <th scope="col">Quantity</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#00541</a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/products/img-1.png" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Rockerz Ear Bluetooth Headphones</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>16 Aug, 2022</td>
-                                                        <td>
-                                                            <span class="text-secondary">$658.00</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-soft-success">In Stock</span>
-                                                        </td>
-                                                        <td>15 PCS</td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#07484</a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/products/img-5.png" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">United Colors Of Benetton</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>05 Sep, 2022</td>
-                                                        <td>
-                                                            <span class="text-secondary">$145.00</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-soft-warning">Low Stock</span>
-                                                        </td>
-                                                        <td>05 PCS</td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#01641</a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/products/img-4.png" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Striped Baseball Cap</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>28 Sep, 2022</td>
-                                                        <td>
-                                                            <span class="text-secondary">$215.00</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-soft-danger">Out of Stock</span>
-                                                        </td>
-                                                        <td>0 PCS</td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#00065</a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/products/img-3.png" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">350 ml Glass Grocery Container</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>02 Oct, 2022</td>
-                                                        <td>
-                                                            <span class="text-secondary">$79.99</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-soft-success">In Stock</span>
-                                                        </td>
-                                                        <td>37 PCS</td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#00156</a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/products/img-2.png" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">One Seater Sofa</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>11 Oct, 2022</td>
-                                                        <td>
-                                                            <span class="text-secondary">$264.99</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-soft-success">In Stock</span>
-                                                        </td>
-                                                        <td>23 PCS</td>
-                                                    </tr><!-- end tr -->
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#!" class="fw-medium link-primary">#09102</a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/products/img-8.png" alt="" class="avatar-xs rounded-circle" />
-                                                                </div>
-                                                                <div class="flex-grow-1">Men's Running Shoes Active Grip</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>19 Nov, 2022</td>
-                                                        <td>
-                                                            <span class="text-secondary">$264.99</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-soft-warning">Low Stock</span>
-                                                        </td>
-                                                        <td>23 PCS</td>
-                                                    </tr><!-- end tr -->
-                                                    </tbody><!-- end tbody -->
-                                                </table><!-- end table -->
-                                            </div>
-                                        </div>
-                                    </div> <!-- .card-->
-                                </div> <!-- .col-->
-                            </div> <!-- end row-->
-
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <!-- card -->
-                                    <div class="card card-height-100">
-                                        <div class="card-header align-items-center d-flex">
-                                            <h4 class="card-title mb-0 flex-grow-1">Top Retail Sales Location</h4>
-                                            <div class="flex-shrink-0">
-                                                <button type="button" class="btn btn-soft-primary btn-sm">
-                                                    Export Report
-                                                </button>
-                                            </div>
-                                        </div><!-- end card header -->
-
-                                        <!-- card body -->
-                                        <div class="card-body">
-
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <div id="world-map-line-markers" data-colors='["--tb-light"]' style="height: 420px"></div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-4">
-                                                        <h6 class="text-muted mb-3 fw-medium fs-12 text-uppercase">All Users Statistics</h6>
-                                                        <h4>1,87,42,102 <small class="text-muted fw-normal fs-13">users</small></h4>
-                                                    </div>
-                                                    <div>
-                                                        <p class="mb-2 fw-medium">Current Activity</p>
-                                                        <div class="progress mb-4">
-                                                            <div class="progress-bar" role="progressbar" aria-label="Segment one" style="width: 8%" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-success" role="progressbar" aria-label="Segment two" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-info" role="progressbar" aria-label="Segment three" style="width: 14%" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-danger" role="progressbar" aria-label="Segment three" style="width: 7%" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-secondary" role="progressbar" aria-label="Segment three" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-dark" role="progressbar" aria-label="Segment three" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-warning" role="progressbar" aria-label="Segment three" style="width: 2%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            <div class="progress-bar bg-light" role="progressbar" aria-label="Segment three" style="width: 14%" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-primary align-bottom me-1"></i> Canada <span class="float-end">8%</span></p>
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-success align-bottom me-1"></i>Greenland <span class="float-end">20%</span></p>
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-info align-bottom me-1"></i>US <span class="float-end">14%</span></p>
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-secondary align-bottom me-1"></i>Russia <span class="float-end">25%</span></p>
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-danger align-bottom me-1"></i>Brazil <span class="float-end">7%</span></p>
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-dark align-bottom me-1"></i>Sydney <span class="float-end">10%</span></p>
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-warning align-bottom me-1"></i>Norway<span class="float-end">2%</span></p>
-                                                        <p><i class="ri-checkbox-blank-circle-fill text-light align-bottom me-1"></i>China <span class="float-end">14%</span></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end card body -->
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                <!-- end col -->
                             </div>
 
                         </div> <!-- end .h-100-->
@@ -1330,16 +805,150 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © Hybrix.
+                        <script>document.write(new Date().getFullYear())</script> © Laundrymu.
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end d-none d-sm-block">
-                            Design & Develop by Themesbrand
+                            Design & Develop by Laundrymu
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
     </div>
+@endsection
+
+
+@section('js')
+    <script>
+        $.ajax({
+            url: '{{ route('getChartDashboard') }}',
+            method: 'GET',
+            success: function (params) {
+                document.getElementById('nominalTransaksi').innerText = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                }).format(params.data[3]);
+                document.getElementById('jumlahTransaksi').innerText = params.data[2]
+
+                chartTahun(params.data[1], params.data[0]);
+            }
+        });
+
+        function getChartColorsArray(e) {
+            if (null !== document.getElementById(e)) {
+                var t = document.getElementById(e).getAttribute("data-colors");
+                if (t) return (t = JSON.parse(t)).map(function(e) {
+                    var t = e.replace(" ", "");
+                    return -1 === t.indexOf(",") ? getComputedStyle(document.documentElement).getPropertyValue(t) || t : 2 == (e = e.split(",")).length ? "rgba(" + getComputedStyle(document.documentElement).getPropertyValue(e[0]) + "," + e[1] + ")" : t
+                });
+                console.warn("data-colors atributes not found on", e)
+            }
+        }
+
+        function chartTahun(nominal, jumlah) {
+            let worldlinemap, overlay, options, chart, linechartcustomerColors = getChartColorsArray("customer_impression_charts"),
+                chartDonutBasicColors = (linechartcustomerColors && (options = {
+                    series: [{
+                        name: "Jumlah",
+                        type: "area",
+                        data: jumlah
+                    }, {
+                        name: "Nominal",
+                        type: "bar",
+                        data: nominal
+                    }],
+                    chart: {
+                        height: 310,
+                        type: "line",
+                        toolbar: {
+                            show: !1
+                        }
+                    },
+                    stroke: {
+                        curve: "straight",
+                        dashArray: [0, 0, 8],
+                        width: [.1, 0, 2]
+                    },
+                    fill: {
+                        opacity: [.03, .9, 1]
+                    },
+                    markers: {
+                        size: [0, 0, 0],
+                        strokeWidth: 2,
+                        hover: {
+                            size: 4
+                        }
+                    },
+                    xaxis: {
+                        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        axisTicks: {
+                            show: !1
+                        },
+                        axisBorder: {
+                            show: !1
+                        }
+                    },
+                    grid: {
+                        show: !0,
+                        xaxis: {
+                            lines: {
+                                show: !0
+                            }
+                        },
+                        yaxis: {
+                            lines: {
+                                show: !1
+                            }
+                        },
+                        padding: {
+                            top: 0,
+                            right: -2,
+                            bottom: 15,
+                            left: 10
+                        }
+                    },
+                    legend: {
+                        show: !0,
+                        horizontalAlign: "center",
+                        offsetX: 0,
+                        offsetY: -5,
+                        markers: {
+                            width: 9,
+                            height: 9,
+                            radius: 6
+                        },
+                        itemMargin: {
+                            horizontal: 10,
+                            vertical: 0
+                        }
+                    },
+                    plotOptions: {
+                        bar: {
+                            columnWidth: "20%",
+                            barHeight: "100%",
+                            borderRadius: [8]
+                        }
+                    },
+                    colors: linechartcustomerColors,
+                    tooltip: {
+                        shared: !0,
+                        y: [{
+                            formatter: function(e) {
+                                return void 0 !== e ? e.toFixed(0) : e
+                            }
+                        }, {
+                            formatter: function(e) {
+                                return void 0 !== e ? new Intl.NumberFormat('id-ID', {
+                                    style: 'currency',
+                                    currency: 'IDR',
+                                }).format(e.toFixed(2)) : e
+                            }
+                        }]
+                    }
+                }, (chart = new ApexCharts(document.querySelector("#customer_impression_charts"), options)).render()), getChartColorsArray("#store-visits-source"));
+        }
+
+    </script>
 @endsection
 

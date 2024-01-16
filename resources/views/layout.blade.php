@@ -489,19 +489,21 @@
                         <a href="{{ route('dashboard') }}" class="nav-link menu-link"> <i class="bi bi-graph-up"></i> <span data-key="t-dashboard">Laporan Laundry</span> </a>
                     </li>
 
-                    <li class="menu-title"><span data-key="t-menu">Pengaturan</span></li>
-                    <li class="nav-item">
-                        <a href="{{ route('pegawai') }}" class="nav-link menu-link {{ $title == "pegawai" ? "active" : "" }}">
-                            <i class="bi bi-people"></i>
-                            <span data-key="t-dashboard">Pegawai</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('outlet') }}" class="nav-link menu-link {{ $title == "outlet" ? "active" : "" }}">
-                            <i class="bi bi-house"></i>
-                            <span data-key="t-dashboard">Outlet</span>
-                        </a>
-                    </li>
+                    @if(Session::get('data_user')->role == "owner")
+                        <li class="menu-title"><span data-key="t-menu">Pengaturan</span></li>
+                        <li class="nav-item">
+                            <a href="{{ route('pegawai') }}" class="nav-link menu-link {{ $title == "pegawai" ? "active" : "" }}">
+                                <i class="bi bi-people"></i>
+                                <span data-key="t-dashboard">Pegawai</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('outlet') }}" class="nav-link menu-link {{ $title == "outlet" ? "active" : "" }}">
+                                <i class="bi bi-house"></i>
+                                <span data-key="t-dashboard">Outlet</span>
+                            </a>
+                        </li>
+                    @endif
 
                     <li class="menu-title"><span data-key="t-menu">Bantuan</span></li>
                     <li class="nav-item">
@@ -546,7 +548,6 @@
 <script src="{{ asset('assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
 <script src="{{ asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/dashboard-ecommerce.init.js') }}"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

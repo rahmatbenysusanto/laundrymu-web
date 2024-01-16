@@ -16,22 +16,28 @@ use Mike42\Escpos\Printer;
 
 class TransaksiController extends Controller
 {
-    public function buatTransaksi(): View
+    public function buatTransaksi(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
     {
-        $dataParfum = $this->hitApiService->GET('api/parfum/toko/'.Session::get('toko')->id, []);
-        $dataDiskon = $this->hitApiService->GET('api/diskon/toko/'.Session::get('toko')->id, []);
-        $dataPembayaran = $this->hitApiService->GET('api/pembayaran/toko/'.Session::get('toko')->id, []);
-        $dataLayanan = $this->hitApiService->GET('api/layanan/toko/'.Session::get('toko')->id, []);
-        $dataPengiriman = $this->hitApiService->GET('api/pengiriman/toko/'.Session::get('toko')->id, []);
+        $toko = $this->hitApiService->GET('api/toko/'.Session::get('toko')->id, []);
+        if ($toko->data->status == "active") {
+            $dataParfum = $this->hitApiService->GET('api/parfum/toko/'.Session::get('toko')->id, []);
+            $dataDiskon = $this->hitApiService->GET('api/diskon/toko/'.Session::get('toko')->id, []);
+            $dataPembayaran = $this->hitApiService->GET('api/pembayaran/toko/'.Session::get('toko')->id, []);
+            $dataLayanan = $this->hitApiService->GET('api/layanan/toko/'.Session::get('toko')->id, []);
+            $dataPengiriman = $this->hitApiService->GET('api/pengiriman/toko/'.Session::get('toko')->id, []);
 
-        $parfum = $dataParfum->data ?? [];
-        $diskon = $dataDiskon->data ?? [];
-        $pembayaran = $dataPembayaran->data ?? [];
-        $layanan = $dataLayanan->data ?? [];
-        $pengiriman = $dataPengiriman->data ?? [];
+            $parfum = $dataParfum->data ?? [];
+            $diskon = $dataDiskon->data ?? [];
+            $pembayaran = $dataPembayaran->data ?? [];
+            $layanan = $dataLayanan->data ?? [];
+            $pengiriman = $dataPengiriman->data ?? [];
 
-        $title = 'buat transaksi';
-        return view('transaksi.buat', compact('title', 'parfum', 'diskon', 'pembayaran', 'layanan', 'pengiriman'));
+            $title = 'buat transaksi';
+            return view('transaksi.buat', compact('title', 'parfum', 'diskon', 'pembayaran', 'layanan', 'pengiriman'));
+        } else {
+            Session::flash('error', 'Outlet '.Session::get('toko')->nama.' sudah masuk tanggal Expire pada '.tanggal_jam_indo(Session::get('toko')->expired).', Silahkan perpanjang lisensi outlet untuk dapat membuat transaksi');
+            return redirect()->action([OutletController::class, 'index']);
+        }
     }
 
     public function createTransaksi(Request $request): \Illuminate\Http\JsonResponse
@@ -88,11 +94,26 @@ class TransaksiController extends Controller
         if (isset($dataTransaksi) && $dataTransaksi->status && $dataTransaksi->data->transaksi != null) {
             $transaksi = $dataTransaksi->data->transaksi;
             $detail = $dataTransaksi->data->detail;
+            $histori = $dataTransaksi->data->transaksi->histori_status_transaksi;
             $title = "list transaksi";
-            return view('transaksi.lihat', compact('title', 'transaksi', 'detail'));
+            return view('transaksi.lihat', compact('title', 'transaksi', 'detail', 'histori'));
         } else {
             Session::flash('error', 'Transaksi tidak ditemukan');
             return back();
+        }
+    }
+
+    public function prosesTransaksi($order_number, $status): \Illuminate\Http\JsonResponse
+    {
+        $prosesTransaksi = $this->hitApiService->PATCH('api/transaksi/'.$order_number.'/'.$status, []);
+        if (isset($prosesTransaksi) && $prosesTransaksi->status) {
+            return response()->json([
+                'status'    => true,
+            ]);
+        } else {
+            return response()->json([
+                'status'    => false,
+            ]);
         }
     }
 
