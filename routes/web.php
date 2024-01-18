@@ -57,6 +57,11 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
             Route::get('/gunakan-outlet', 'gunakanOutlet')->name('gunakanOutlet');
             Route::get('/lihat-outlet/{id}', 'lihatOutlet');
             Route::get('/perpanjang-lisensi-outlet/{id}', 'perpanjangLisensi');
+            Route::get('/tambah-outlet', 'tambahOutlet')->name('tambahOutlet');
+            Route::post('/buat-outlet', 'createOutlet')->name('createOutlet');
+            Route::get('/histori-pembayaran-outlet', 'historiPembayaran')->name('historiPembayaran');
+            Route::get('/pembayaran-outlet/{nomorPembayaran}', 'detailPembayaran');
+            Route::post('/upload-bukti-pembayaran', 'uploadBuktiPembayaran')->name('uploadBuktiPembayaran');
         });
 
         Route::controller(\App\Http\Controllers\TransaksiController::class)->group(function () {
@@ -72,6 +77,13 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
         Route::controller(\App\Http\Controllers\PegawaiController::class)->group(function () {
             Route::get('/pegawai', 'index')->name('pegawai');
             Route::post('/tambah-pegawai', 'create')->name('tambahPegawai');
+        });
+
+        Route::controller(\App\Http\Controllers\KodePosController::class)->group(function () {
+            Route::get('/get-kota', 'getKota')->name('getKota');
+            Route::get('/get-kecamatan', 'getKecamatan')->name('getKecamatan');
+            Route::get('/get-kelurahan', 'getKelurahan')->name('getKelurahan');
+            Route::get('/get-kode-pos', 'getKodePos')->name('getKodePos');
         });
     });
 });

@@ -19,14 +19,16 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">Daftar Outlet</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Daftar Outlet</h5>
+                                    <a href="{{ route('tambahOutlet') }}" class="btn btn-primary">Tambah Outlet</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Logo</th>
                                         <th>Nama</th>
                                         <th>No Hp</th>
                                         <th>Alamat</th>
@@ -40,7 +42,6 @@
                                         @foreach($outlet as $out)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $out->logo }}</td>
                                                 <td>{{ $out->nama }}</td>
                                                 <td>{{ $out->no_hp }}</td>
                                                 <td>{{ $out->alamat }}</td>
@@ -51,7 +52,7 @@
                                                         <span class="badge badge-soft-danger">Non Aktif</span>
                                                     @endif
                                                 </td>
-                                                <td>{{ $out->expired }}</td>
+                                                <td>{{ tanggal_indo($out->expired) }}</td>
                                                 <td>
                                                     @if(Session::get('toko')->id === $out->id)
                                                         <span class="badge badge-soft-success">Sedang DiGunakan</span>

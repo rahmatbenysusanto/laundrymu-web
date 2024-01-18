@@ -498,10 +498,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('outlet') }}" class="nav-link menu-link {{ $title == "outlet" ? "active" : "" }}">
-                                <i class="bi bi-house"></i>
-                                <span data-key="t-dashboard">Outlet</span>
+                            <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                                <i class="bi bi-house"></i><span data-key="t-multi-level">Outlet</span>
                             </a>
+                            <div class="collapse menu-dropdown {{ $title == "outlet" ? "show" : "" }} {{ $title == "pembayaran outlet" ? "show" : "" }}" id="sidebarMultilevel">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('outlet') }}" class="nav-link {{ $title == "outlet" ? "active" : "" }}"> Daftar Outlet </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('historiPembayaran') }}" class="nav-link {{ $title == "pembayaran outlet" ? "active" : "" }}"> Histori Pembayaran </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     @endif
 
