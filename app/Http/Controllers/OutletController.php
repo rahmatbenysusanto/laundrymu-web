@@ -53,11 +53,34 @@ class OutletController extends Controller
     {
         $dataToko = $this->hitApiService->GET('api/toko/'.(int)base64_decode($id), []);
         if (isset($dataToko) && $dataToko->status) {
+            $dataLisensi = $this->hitApiService->GET('api/get-lisensi', []);
+            $dataMetodePembayaran = $this->hitApiService->GET('api/get-metode-pembayaran', []);
+            $lisensi = $dataLisensi->data ?? [];
+            $metodePembayaran = $dataMetodePembayaran->data ?? [];
             $toko = $dataToko->data;
+
             $title = "outlet";
-            return view('outlet.masa_aktif', compact('title', 'toko'));
+            return view('outlet.masa_aktif', compact('title', 'toko', 'lisensi', 'metodePembayaran'));
         } else {
             Session::flash('error', 'Outlet tidak ditemukan');
+            return back();
+        }
+    }
+
+    public function perpanjangLisensiProses(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->POST('api/toko/perpanjang-lisensi', [
+            'toko_id'               => $request->post('toko_id'),
+            'user_id'               => Session::get('data_user')->id,
+            'lisensi_id'            => $request->post('lisensi'),
+            'metode_pembayaran_id'  => $request->post('metode_pembayaran')
+        ]);
+
+        if (isset($result) && $result->status) {
+            Session::flash('success', 'Perpanjang Lisensi Berhasil, Silahkan melakukan pembayaran');
+            return redirect()->route('historiPembayaran');
+        } else {
+            Session::flash('error', 'Perpanjang Lisensi Gagal');
             return back();
         }
     }
@@ -77,7 +100,6 @@ class OutletController extends Controller
 
     public function createOutlet(Request $request): \Illuminate\Http\JsonResponse
     {
-        Log::info(json_encode($request->all()));
         $create = $this->hitApiService->POST('api/toko', [
             'user_id'               => Session::get('data_user')->id,
             'nama'                  => $request->post('nama'),

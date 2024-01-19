@@ -241,7 +241,7 @@
                                                     <p class="mb-0">Outlet aktif sampai : {{ tanggal_indo(Session::get('toko')->expired) }}</p>
                                                 </div>
                                                 <div class="col-sm-auto">
-                                                    <button type="button" class="btn btn-info btn-label rounded-pill"><i class="ri-markup-line label-icon align-middle rounded-pill fs-16 me-2"></i> Perpanjang Lisensi Outlet</button>
+                                                    <a href="/perpanjang-lisensi-outlet/{{ base64_encode(Session::get('toko')->id) }}" class="btn btn-info btn-label rounded-pill"><i class="ri-markup-line label-icon align-middle rounded-pill fs-16 me-2"></i> Perpanjang Lisensi Outlet</a>
                                                 </div>
                                             </div>
                                             <div class="position-absolute top-0 start-50 mt-2 opacity-25">

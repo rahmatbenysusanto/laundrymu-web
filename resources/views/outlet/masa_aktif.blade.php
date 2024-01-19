@@ -25,18 +25,20 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <form action="" method="POST">
+                                        <form action="{{ route('perpanjangLisensiProses') }}" method="POST">
                                             @csrf
+                                            <input type="hidden" name="toko_id" value="{{ $toko->id }}">
                                             <div class="mb-3">
                                                 <label for="nama-outlet" class="form-label">Nama Outlet</label>
                                                 <input type="text" class="form-control" name="namaOutlet" value="{{ $toko->nama }}" readonly>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="lisensi" class="form-label">Pilihan Durasi Lisensi</label>
-                                                <select class="form-select" name="lisensi" id="lisensi">
-                                                    <option value="1">1 Bulan | Rp 25.000</option>
-                                                    <option value="2">3 Bulan | Rp 65.000</option>
-                                                    <option value="3">6 Bulan | Rp 115.000</option>
+                                                <select class="form-select" name="lisensi" id="lisensi" required>
+                                                    <option value="" disabled selected>Pilih Lisensi</option>
+                                                    @foreach($lisensi as $lis)
+                                                        <option value="{{ $lis->id }}">{{ $lis->nama }} | @currency($lis->harga)</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="mb-3">
@@ -48,15 +50,15 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="metodePembayaran" class="form-label">Metode Pembayaran</label>
-                                                <select class="form-select" name="metodePembayaran" id="metodePembayaran">
-                                                    <option value="dana">DANA</option>
-                                                    <option value="dana">OVO</option>
-                                                    <option value="dana">ShopeePay</option>
-                                                    <option value="dana">LinkAja</option>
+                                                <select class="form-select" name="metode_pembayaran" id="metodePembayaran" required>
+                                                    <option value="" disabled selected>Pilih Metode Pembayaran</option>
+                                                    @foreach($metodePembayaran as $pem)
+                                                        <option value="{{ $pem->id }}">{{ $pem->metode_pembayaran }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="d-flex justify-content-end">
-                                                <a class="btn btn-primary">Proses Pembelian</a>
+                                                <button type="submit" class="btn btn-primary">Proses Pembelian</button>
                                             </div>
                                         </form>
                                     </div>

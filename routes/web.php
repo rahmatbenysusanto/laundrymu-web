@@ -62,6 +62,7 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
             Route::get('/histori-pembayaran-outlet', 'historiPembayaran')->name('historiPembayaran');
             Route::get('/pembayaran-outlet/{nomorPembayaran}', 'detailPembayaran');
             Route::post('/upload-bukti-pembayaran', 'uploadBuktiPembayaran')->name('uploadBuktiPembayaran');
+            Route::post('/perpanjang-lisensi-proses', 'perpanjangLisensiProses')->name('perpanjangLisensiProses');
         });
 
         Route::controller(\App\Http\Controllers\TransaksiController::class)->group(function () {
