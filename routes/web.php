@@ -28,6 +28,8 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
             Route::get('/layanan', 'index')->name('layanan');
             Route::post('/tambah-layanan', 'tambahLayanan')->name('tambahLayanan');
             Route::get('/hapus-layanan', 'hapusLayanan')->name('hapusLayanan');
+            Route::get('/edit-layanan/{id}', 'editLayanan');
+            Route::post('/edit-layanan', 'prosesEditLayanan')->name('prosesEditLayanan');
         });
 
         Route::controller(\App\Http\Controllers\ParfumController::class)->group(function () {
@@ -85,6 +87,11 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
             Route::get('/get-kecamatan', 'getKecamatan')->name('getKecamatan');
             Route::get('/get-kelurahan', 'getKelurahan')->name('getKelurahan');
             Route::get('/get-kode-pos', 'getKodePos')->name('getKodePos');
+        });
+
+        Route::controller(\App\Http\Controllers\LaporanController::class)->group(function () {
+            Route::get('/laporan-transaksi', 'laporanTransaksi')->name('laporanTransaksi');
+            Route::get('/laporan-pelanggan', 'laporanPelanggan')->name('laporanPelanggan');
         });
     });
 });

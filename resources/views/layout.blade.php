@@ -59,7 +59,7 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box horizontal-logo">
-                        <a href="index.html" class="logo logo-dark">
+                        <a href="{{ route('dashboard') }}" class="logo logo-dark">
                                     <span class="logo-sm">
                                         <img src="{{ asset('assets/images/laundrymu.png') }}" alt="" height="22">
                                     </span>
@@ -68,7 +68,7 @@
                                     </span>
                         </a>
 
-                        <a href="index.html" class="logo logo-light">
+                        <a href="{{ route('dashboard') }}" class="logo logo-light">
                                     <span class="logo-sm">
                                         <img src="{{ asset('assets/images/laundrymu.png') }}" alt="" height="22">
                                     </span>
@@ -315,8 +315,8 @@
                         </div>
 
                         <div class="dropdown-item bg-transparent text-wrap">
-                            <a href="index.html" class="btn btn-soft-secondary btn-sm btn-rounded">how to setup <i class="mdi mdi-magnify ms-1 align-middle"></i></a>
-                            <a href="index.html" class="btn btn-soft-secondary btn-sm btn-rounded">buttons <i class="mdi mdi-magnify ms-1 align-middle"></i></a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-soft-secondary btn-sm btn-rounded">how to setup <i class="mdi mdi-magnify ms-1 align-middle"></i></a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-soft-secondary btn-sm btn-rounded">buttons <i class="mdi mdi-magnify ms-1 align-middle"></i></a>
                         </div>
                     </div>
 
@@ -402,7 +402,7 @@
     <div class="app-menu navbar-menu">
         <!-- LOGO -->
         <div class="navbar-brand-box">
-            <a href="index.html" class="logo logo-dark">
+            <a href="{{ route('dashboard') }}" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="{{ asset('assets/images/laundrymu.png') }}" alt="" height="26">
                         </span>
@@ -410,7 +410,7 @@
                             <img src="{{ asset('assets/images/laundrymu.png') }}" alt="" height="26">
                         </span>
             </a>
-            <a href="index.html" class="logo logo-light">
+            <a href="{{ route('dashboard') }}" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="{{ asset('assets/images/laundrymu.png') }}" alt="" height="26">
                         </span>
@@ -486,22 +486,49 @@
 
                     <li class="menu-title"><span data-key="t-menu">Laporan</span></li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link menu-link"> <i class="bi bi-graph-up"></i> <span data-key="t-dashboard">Laporan Laundry</span> </a>
+                        <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                            <i class="bi bi-graph-up"></i><span data-key="t-multi-level">Laporan Laundry</span>
+                        </a>
+                        <div class="collapse menu-dropdown {{ $title == "laporan pelanggan" ? "show" : "" }} {{ $title == "laporan transaksi" ? "show" : "" }}" id="sidebarMultilevel">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan transaksi" ? "active" : "" }}"> Laporan Transaksi </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Laporan Pelanggan </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Laporan Pembayaran </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
 
                     @if(Session::get('data_user')->role == "owner")
                         <li class="menu-title"><span data-key="t-menu">Pengaturan</span></li>
                         <li class="nav-item">
-                            <a href="{{ route('pegawai') }}" class="nav-link menu-link {{ $title == "pegawai" ? "active" : "" }}">
-                                <i class="bi bi-people"></i>
-                                <span data-key="t-dashboard">Pegawai</span>
+                            <a class="nav-link menu-link" href="#pegawaiMenuBar" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pegawaiMenuBar">
+                                <i class="bi bi-people"></i><span data-key="t-multi-level">Pegawai</span>
                             </a>
+                            <div class="collapse menu-dropdown {{ $title == "pegawai" ? "show" : "" }}" id="pegawaiMenuBar">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('pegawai') }}" class="nav-link {{ $title == "pegawai" ? "active" : "" }}"> Daftar Pegawai </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Absensi Pegawai </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Gaji Pegawai </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                            <a class="nav-link menu-link" href="#outletMenuBar" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="outletMenuBar">
                                 <i class="bi bi-house"></i><span data-key="t-multi-level">Outlet</span>
                             </a>
-                            <div class="collapse menu-dropdown {{ $title == "outlet" ? "show" : "" }} {{ $title == "pembayaran outlet" ? "show" : "" }}" id="sidebarMultilevel">
+                            <div class="collapse menu-dropdown {{ $title == "outlet" ? "show" : "" }} {{ $title == "pembayaran outlet" ? "show" : "" }}" id="outletMenuBar">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="{{ route('outlet') }}" class="nav-link {{ $title == "outlet" ? "active" : "" }}"> Daftar Outlet </a>

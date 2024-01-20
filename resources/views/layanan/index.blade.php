@@ -49,12 +49,7 @@
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end">
                                                             <li>
-                                                                <a href="#" class="dropdown-item">
-                                                                    <i class="ri-eye-fill align-bottom me-2 text-muted"></i> Lihat
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item edit-item-btn">
+                                                                <a href="/edit-layanan/{{ base64_encode($lay->id) }}" class="dropdown-item edit-item-btn">
                                                                     <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit
                                                                 </a>
                                                             </li>

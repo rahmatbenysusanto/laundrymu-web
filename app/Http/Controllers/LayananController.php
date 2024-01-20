@@ -46,8 +46,39 @@ class LayananController extends Controller
         } else {
             return response()->json([
                 'status'    => false,
-                'message'   => $delete->message
+                'message'   => 'Layanan sudah dipakai dan tidak bisa dihapus'
             ]);
         }
+    }
+
+    public function editLayanan($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->GET('api/layanan/'.base64_decode($id), []);
+
+        if (isset($result) && $result->status && $result->data != null) {
+            $title = 'layanan';
+            $layanan = $result->data;
+            return view('layanan.edit', compact('title', 'layanan'));
+        } else {
+            Session::flash('error', 'Layanan tidak ditemukan');
+            return back();
+        }
+    }
+
+    public function prosesEditLayanan(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->PATCH('api/layanan/'.$request->post('id'), [
+            'toko_id'   => Session::get('toko')->id,
+            'nama'      => $request->post('namaLayanan'),
+            'type'      => $request->post('tipeLayanan'),
+            'harga'     => $request->post('hargaLayanan'),
+        ]);
+
+        if (isset($result) && $result->status) {
+            Session::flash('success', 'Edit layanan berhasil');
+        } else {
+            Session::flash('error', 'Edit layanan gagal');
+        }
+        return redirect()->route('layanan');
     }
 }
