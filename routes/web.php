@@ -35,6 +35,9 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
         Route::controller(\App\Http\Controllers\ParfumController::class)->group(function () {
             Route::get('/parfum', 'index')->name('parfum');
             Route::post('/parfum', 'tambahParfum')->name('tambahParfum');
+            Route::get('/hapus-parfum', 'hapusParfum')->name('hapusParfum');
+            Route::get('/edit-parfum/{id}', 'editParfum');
+            Route::post('/edit-parfum', 'prosesEditParfum')->name('prosesEditParfum');
         });
 
         Route::controller(\App\Http\Controllers\PelangganController::class)->group(function () {

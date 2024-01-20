@@ -153,6 +153,8 @@
                                     cancelButtonText:"Kembali",
                                     buttonsStyling:!1,
                                     showCloseButton:!0
+                                }).then(function (e) {
+                                    location.reload();
                                 });
                             } else {
                                 Swal.fire({
@@ -169,7 +171,9 @@
                                     cancelButtonText:"Kembali",
                                     buttonsStyling:!1,
                                     showCloseButton:!0
-                                })
+                                }).then(function (e) {
+                                    location.reload();
+                                });
                             }
                         }
                     });
