@@ -60,4 +60,20 @@ class PembayaranController extends Controller
         }
         return redirect()->route('pembayaran');
     }
+
+    public function hapusPembayaran(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $delete = $this->hitApiService->DELETE('api/pembayaran/'.$request->id);
+        if (isset($delete) && $delete->status) {
+            return response()->json([
+                'status'    => true,
+                'message'   => $delete->message
+            ]);
+        } else {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Pembayaran sudah dipakai dan tidak bisa dihapus'
+            ]);
+        }
+    }
 }

@@ -92,4 +92,20 @@ class PelangganController extends Controller
         }
         return redirect()->route('pelanggan');
     }
+
+    public function hapusPelanggan(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $delete = $this->hitApiService->DELETE('api/pelanggan/'.$request->id);
+        if (isset($delete) && $delete->status) {
+            return response()->json([
+                'status'    => true,
+                'message'   => $delete->message
+            ]);
+        } else {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Pelanggan sudah dipakai dan tidak bisa dihapus'
+            ]);
+        }
+    }
 }

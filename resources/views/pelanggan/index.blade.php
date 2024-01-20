@@ -56,7 +56,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="dropdown-item remove-item-btn">
+                                                                <a class="dropdown-item remove-item-btn" onclick="hapusPelanggan('{{ $pel->id }}')">
                                                                     <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Hapus
                                                                 </a>
                                                             </li>
@@ -106,4 +106,71 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        function hapusPelanggan(id) {
+            Swal.fire({
+                title:"Apakah kamu yakin?",
+                text:"untuk menghapus pelanggan",
+                icon:"warning",
+                showCancelButton:!0,
+                confirmButtonText:"Yes, delete it!",
+                cancelButtonText:"No, cancel!",
+                confirmButtonClass:"btn btn-primary w-xs me-2 mt-2",
+                cancelButtonClass:"btn btn-danger w-xs mt-2",
+                buttonsStyling:!1,showCloseButton:!0
+            }).then(function(t){
+                if (t.value) {
+                    $.ajax({
+                        url: '{{ route("hapusPelanggan") }}',
+                        method: 'GET',
+                        data: {
+                            id: id
+                        },
+                        success: function (res) {
+                            if (res.status) {
+                                Swal.fire({
+                                    html:'<div class="mt-3">' +
+                                        '<lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>' +
+                                        '<div class="mt-4 pt-2 fs-15">' +
+                                        '<h4>Berhasil !</h4>' +
+                                        '<p class="text-muted mx-4 mb-0">Hapus pelanggan berhasil.</p>' +
+                                        '</div>' +
+                                        '</div>',
+                                    showCancelButton:!0,
+                                    showConfirmButton:!1,
+                                    cancelButtonClass:"btn btn-primary w-xs mb-1",
+                                    cancelButtonText:"Kembali",
+                                    buttonsStyling:!1,
+                                    showCloseButton:!0
+                                }).then(function (e) {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire({
+                                    html:'<div class="mt-3">' +
+                                        '<lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f06548,secondary:#f7b84b" style="width:120px;height:120px"></lord-icon>' +
+                                        '<div class="mt-4 pt-2 fs-15">' +
+                                        '<h4>Gagal !</h4>' +
+                                        `<p class="text-muted mx-4 mb-0">${res.message}</p>` +
+                                        '</div>' +
+                                        '</div>',
+                                    showCancelButton:!0,
+                                    showConfirmButton:!1,
+                                    cancelButtonClass:"btn btn-primary w-xs mb-1",
+                                    cancelButtonText:"Kembali",
+                                    buttonsStyling:!1,
+                                    showCloseButton:!0
+                                }).then(function (e) {
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 @endsection

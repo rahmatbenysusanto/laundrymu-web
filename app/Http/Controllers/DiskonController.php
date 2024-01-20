@@ -64,4 +64,20 @@ class DiskonController extends Controller
         }
         return redirect()->route('diskon');
     }
+
+    public function hapusDiskon(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $delete = $this->hitApiService->DELETE('api/diskon/'.$request->id);
+        if (isset($delete) && $delete->status) {
+            return response()->json([
+                'status'    => true,
+                'message'   => $delete->message
+            ]);
+        } else {
+            return response()->json([
+                'status'    => false,
+                'message'   => 'Diskon sudah dipakai dan tidak bisa dihapus'
+            ]);
+        }
+    }
 }
