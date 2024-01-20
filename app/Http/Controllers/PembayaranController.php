@@ -31,4 +31,33 @@ class PembayaranController extends Controller
         }
         return back();
     }
+
+    public function editPembayaran($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->GET('api/pembayaran/'.base64_decode($id), []);
+
+        if (isset($result) && $result->status && $result->data != null) {
+            $title = 'pembayaran';
+            $pembayaran = $result->data;
+            return view('pembayaran.edit', compact('title', 'pembayaran'));
+        } else {
+            Session::flash('error', 'Pembayaran tidak ditemukan');
+            return back();
+        }
+    }
+
+    public function prosesEditPembayaran(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->PATCH('api/pembayaran/'.$request->post('id'), [
+            'toko_id'   => Session::get('toko')->id,
+            'nama'      => $request->post('namaPembayaran'),
+        ]);
+
+        if (isset($result) && $result->status) {
+            Session::flash('success', 'Edit pembayaran berhasil');
+        } else {
+            Session::flash('error', 'Edit pembayaran gagal');
+        }
+        return redirect()->route('pembayaran');
+    }
 }

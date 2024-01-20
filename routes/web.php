@@ -45,16 +45,25 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
             Route::post('/pelanggan', 'tambahPelanggan')->name('tambahPelanggan');
             Route::post('/tambah-pelanggan-ajax', 'tambahPelangganAjax')->name('tambahPelangganAjax');
             Route::get('/get-pelanggan', 'getPelanggan')->name('getPelanggan');
+            Route::get('/hapus-pelanggan', 'hapusPelanggan')->name('hapusPelanggan');
+            Route::get('/edit-pelanggan/{id}', 'editPelanggan');
+            Route::post('/edit-pelanggan', 'prosesEditPelanggan')->name('prosesEditPelanggan');
         });
 
         Route::controller(\App\Http\Controllers\PembayaranController::class)->group(function () {
             Route::get('/pembayaran', 'index')->name('pembayaran');
             Route::post('/pembayaran', 'tambahPembayaran')->name('tambahPembayaran');
+            Route::get('/hapus-pembayaran', 'hapusPembayaran')->name('hapusPembayaran');
+            Route::get('/edit-pembayaran/{id}', 'editPembayaran');
+            Route::post('/edit-pembayaran', 'prosesEditPembayaran')->name('prosesEditPembayaran');
         });
 
         Route::controller(\App\Http\Controllers\DiskonController::class)->group(function () {
             Route::get('/diskon', 'index')->name('diskon');
             Route::post('/diskon', 'tambahDiskon')->name('tambahDiskon');
+            Route::get('/hapus-diskon', 'hapusDiskon')->name('hapusDiskon');
+            Route::get('/edit-diskon/{id}', 'editDiskon');
+            Route::post('/edit-diskon', 'prosesEditDiskon')->name('prosesEditDiskon');
         });
 
         Route::controller(\App\Http\Controllers\OutletController::class)->group(function () {

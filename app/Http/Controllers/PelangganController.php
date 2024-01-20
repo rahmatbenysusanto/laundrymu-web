@@ -62,4 +62,34 @@ class PelangganController extends Controller
             'data'  => $pelanggan
         ]);
     }
+
+    public function editPelanggan($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->GET('api/pelanggan/'.base64_decode($id), []);
+
+        if (isset($result) && $result->status && $result->data != null) {
+            $title = 'pelanggan';
+            $pelanggan = $result->data;
+            return view('pelanggan.edit', compact('title', 'pelanggan'));
+        } else {
+            Session::flash('error', 'Pelanggan tidak ditemukan');
+            return back();
+        }
+    }
+
+    public function prosesEditPelanggan(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->PATCH('api/pelanggan/'.$request->post('id'), [
+            'toko_id'   => Session::get('toko')->id,
+            'nama'      => $request->post('namaPelanggan'),
+            'no_hp'     => $request->post('no_hp'),
+        ]);
+
+        if (isset($result) && $result->status) {
+            Session::flash('success', 'Edit pelanggan berhasil');
+        } else {
+            Session::flash('error', 'Edit pelanggan gagal');
+        }
+        return redirect()->route('pelanggan');
+    }
 }
