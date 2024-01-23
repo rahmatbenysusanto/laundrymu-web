@@ -103,7 +103,7 @@
                                             </form>
 
                                             <div class="text-center mt-5">
-                                                <p class="mb-0">Belum punya akun ? <a href="auth-signup-basic.html" class="fw-semibold text-secondary text-decoration-underline"> Buat Akun</a> </p>
+                                                <p class="mb-0">Belum punya akun ? <a href="{{ route('register') }}" class="fw-semibold text-secondary text-decoration-underline"> Buat Akun</a> </p>
                                             </div>
                                         </div>
                                     </div><!-- end card body -->

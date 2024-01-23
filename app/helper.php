@@ -23,9 +23,15 @@ function tanggal_indo($date): string
     return $tanggal . ' ' . $bulan . ' ' . $tahun;
 }
 
-function getBulan()
+function getBulan(): string
 {
     $bulan = date('m', time());
+    return getStr($bulan);
+}
+
+function getBeforeBulan(): string
+{
+    $bulan = date('m', strtotime('-1 months'));
     return getStr($bulan);
 }
 

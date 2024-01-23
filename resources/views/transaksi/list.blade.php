@@ -74,7 +74,7 @@
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-end">
                                                             <li>
-                                                                <a href="/cetak-struk/{{ $tra->order_number }}" class="dropdown-item">
+                                                                <a class="dropdown-item" onclick="cetak()">
                                                                     <i class="ri-printer-fill align-bottom me-2 text-muted"></i> Cetak Struk
                                                                 </a>
                                                             </li>
@@ -109,6 +109,62 @@
             </div>
         </div>
     </div>
+
+    <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Cetak Struk Transaksi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                </div>
+                <div class="modal-body">
+                    <div id="viewStruk" style="width: 219px; background: red; padding: 10px; font-size: 10px !important;">
+                        <div class="text-center">
+                            <p class="mb-0">MOODA LAUNDRY</p>
+                            <p class="mb-0">Pundung Rejo RT03/01 Jati</p>
+                            <p class="mb-0">0895627637701</p>
+                            <hr>
+                            <p class="mb-0">Rafika Hasni</p>
+                            <p class="mb-0">087836628240</p>
+                            <hr>
+                        </div>
+                        <p class="mb-0">No Nota : 202401072338837</p>
+                        <p class="mb-0">Tanggal : 20 Januari 2024</p>
+                        <p>Note : bawa tas laundry warna hitam</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="85">Item</th>
+                                    <th width="30">QTY</th>
+                                    <th width="40">Price</th>
+                                    <th>Amt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.Cuci</td>
+                                    <td>3.4Kg</td>
+                                    <td>4.000</td>
+                                    <td>13.600</td>
+                                </tr>
+                                <tr>
+                                    <td>2.Seterika</td>
+                                    <td>3.4Kg</td>
+                                    <td>4.000</td>
+                                    <td>13.600</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kembali</button>
+                    <button type="button" class="btn btn-primary" onclick="cetak()">Print Struk</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('js')
@@ -178,6 +234,59 @@
                     });
                 }
             });
+        }
+
+        // function cetakStruk(order_number) {
+        //     $('#myModal').modal('show');
+        // }
+
+        function cetak() {
+            let header_str = `<html lang=""><head><title>` + document.title  + '</title></head><body>';
+            let footer_str = '</body></html>';
+            let new_str = `
+                     <div id="viewStruk" style="width: 219px; background: red; padding: 10px; font-size: 10px !important;">
+                        <div class="text-center">
+                            <p class="mb-0">MOODA LAUNDRY</p>
+                            <p class="mb-0">Pundung Rejo RT03/01 Jati</p>
+                            <p class="mb-0">0895627637701</p>
+                            <hr>
+                            <p class="mb-0">Rafika Hasni</p>
+                            <p class="mb-0">087836628240</p>
+                            <hr>
+                        </div>
+                        <p class="mb-0">No Nota : 202401072338837</p>
+                        <p class="mb-0">Tanggal : 20 Januari 2024</p>
+                        <p>Note : bawa tas laundry warna hitam</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="85">Item</th>
+                                    <th width="30">QTY</th>
+                                    <th width="40">Price</th>
+                                    <th>Amt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.Cuci</td>
+                                    <td>3.4Kg</td>
+                                    <td>4.000</td>
+                                    <td>13.600</td>
+                                </tr>
+                                <tr>
+                                    <td>2.Seterika</td>
+                                    <td>3.4Kg</td>
+                                    <td>4.000</td>
+                                    <td>13.600</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            `;
+            let old_str = document.body.innerHTML;
+            document.body.innerHTML = header_str + new_str + footer_str;
+            window.print();
+            document.body.innerHTML = old_str;
         }
     </script>
 @endsection

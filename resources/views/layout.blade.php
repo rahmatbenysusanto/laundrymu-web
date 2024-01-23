@@ -510,16 +510,16 @@
                             <a class="nav-link menu-link" href="#pegawaiMenuBar" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pegawaiMenuBar">
                                 <i class="bi bi-people"></i><span data-key="t-multi-level">Pegawai</span>
                             </a>
-                            <div class="collapse menu-dropdown {{ $title == "pegawai" ? "show" : "" }}" id="pegawaiMenuBar">
+                            <div class="collapse menu-dropdown {{ $title == "pegawai" ? "show" : "" }} {{ $title == "absensi pegawai" ? "show" : "" }} {{ $title == "gaji pegawai" ? "show" : "" }}" id="pegawaiMenuBar">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="{{ route('pegawai') }}" class="nav-link {{ $title == "pegawai" ? "active" : "" }}"> Daftar Pegawai </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Absensi Pegawai </a>
+                                        <a href="{{ route('absensiPegawai') }}" class="nav-link {{ $title == "absensi pegawai" ? "active" : "" }}"> Absensi Pegawai </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Gaji Pegawai </a>
+                                        <a href="{{ route('gajiPegawai') }}" class="nav-link {{ $title == "gaji pegawai" ? "active" : "" }}"> Gaji Pegawai </a>
                                     </li>
                                 </ul>
                             </div>

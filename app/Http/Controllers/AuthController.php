@@ -18,7 +18,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function loginProses(Request $request)
+    public function loginProses(Request $request): \Illuminate\Http\RedirectResponse
     {
         $data['no_hp'] = $request->post('no_hp');
         $data['password'] = $request->post('password');
@@ -33,6 +33,9 @@ class AuthController extends Controller
             if ($login->data->role == "owner") {
                 $toko = $this->hitApiService->GET('api/toko/user/'.$login->data->id, []);
                 Session::put('toko', $toko->data[0]);
+                if ($login->data->status != "active") {
+                    return redirect()->to(route('verifikasiOtp'));
+                }
             } else {
                 $toko = $this->hitApiService->GET('api/toko/pegawai/'.$login->data->id, []);
                 Session::put('toko', $toko->data->toko);
@@ -52,5 +55,59 @@ class AuthController extends Controller
         Session::forget('toko');
 
         return redirect()->action([AuthController::class, 'login']);
+    }
+
+    public function register(): View
+    {
+        return view('auth.register');
+    }
+
+    public function prosesRegister(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->POSTLOGIN('api/user/register', [
+            'nama'      => $request->post('nama'),
+            'no_hp'     => $request->post('no_hp'),
+            'email'     => $request->post('email'),
+            'password'  => $request->post('password'),
+            'role'      => 'owner',
+            'outlet'    => $request->post('outlet')
+        ]);
+
+        if (isset($result) && $result->status) {
+            Session::flash('success', 'Buat akun berhasil, silahkan login');
+        } else {
+            Session::flash('error', 'Buat akun gagal, periksa data anda');
+        }
+
+        return back();
+    }
+
+    public function verifikasiOtp(): View
+    {
+        return view('auth.otp');
+    }
+
+    public function prosesOTP(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $result = $this->hitApiService->POST('api/verifikasi-otp', [
+            'user_id'   => Session::get('data_user')->id,
+            'otp'       => $request->post('kode1').$request->post('kode2').$request->post('kode3').$request->post('kode4')
+        ]);
+
+        if (isset($result) && $result->status) {
+            return redirect()->to(route('dashboard'));
+        } else {
+            Session::flash('error', 'Kode OTP salah, silahkan coba lagi');
+            return back();
+        }
+    }
+
+    public function generateNewOTP(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $result = $this->hitApiService->GET('api/generate-new-otp/'.Session::get('data_user')->id, []);
+
+        return response()->json([
+            'status'  => $result->status
+        ], 200);
     }
 }
