@@ -76,7 +76,7 @@ class AuthController extends Controller
         if (isset($result) && $result->status) {
             Session::flash('success', 'Buat akun berhasil, silahkan login');
         } else {
-            Session::flash('error', 'Buat akun gagal, periksa data anda');
+            Session::flash('error', $result->errors);
         }
 
         return back();

@@ -15,6 +15,8 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Sweet Alert css-->
+    <link href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -124,6 +126,54 @@
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
 <script src="{{ asset('assets/js/pages/passowrd-create.init.js') }}"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Sweet Alerts js -->
+<script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
+<!-- Sweet alert init js-->
+<script src="{{ asset('assets/js/pages/sweetalerts.init.js') }}"></script>
+
+@if($message = Session::get('success'))
+    <script>
+        Swal.fire({
+            html:'<div class="mt-3">' +
+                '<lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>' +
+                '<div class="mt-4 pt-2 fs-15">' +
+                '<h4>Berhasil !</h4>' +
+                '<p class="text-muted mx-4 mb-0">{{ $message }}.</p>' +
+                '</div>' +
+                '</div>',
+            showCancelButton:!0,
+            showConfirmButton:!1,
+            cancelButtonClass:"btn btn-primary w-xs mb-1",
+            cancelButtonText:"Kembali",
+            buttonsStyling:!1,
+            showCloseButton:!0
+        });
+    </script>
+@endif
+
+@if($message = Session::get('error'))
+    <script>
+        Swal.fire({
+            html:'<div class="mt-3">' +
+                '<lord-icon src="https://cdn.lordicon.com/tdrtiskw.json" trigger="loop" colors="primary:#f06548,secondary:#f7b84b" style="width:120px;height:120px"></lord-icon>' +
+                '<div class="mt-4 pt-2 fs-15">' +
+                '<h4>Gagal !</h4>' +
+                '<p class="text-muted mx-4 mb-0">{{ $message }}</p>' +
+                '</div>' +
+                '</div>',
+            showCancelButton:!0,
+            showConfirmButton:!1,
+            cancelButtonClass:"btn btn-primary w-xs mb-1",
+            cancelButtonText:"Kembali",
+            buttonsStyling:!1,
+            showCloseButton:!0
+        })
+    </script>
+@endif
 
 </body>
 
