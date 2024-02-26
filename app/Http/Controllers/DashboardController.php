@@ -14,6 +14,7 @@ class DashboardController extends Controller
         $dataStatusTransaksi = $this->hitApiService->GET('api/get-status-transaksi/'.Session::get('toko')->id, []);
         $dataNominalTransaksi = $this->hitApiService->GET('api/get-nominal-transaksi/'.Session::get('toko')->id, []);
         $dataTransaksiHarian = $this->hitApiService->GET('api/get-transaksi-harian/'.Session::get('toko')->id, []);
+
         $pelanggan = $topPelanggan->data ?? [];
         $statusTransaksi = $dataStatusTransaksi->data ?? [];
         $nominalTransaksi = $dataNominalTransaksi->data ?? [];

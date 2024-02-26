@@ -24,6 +24,26 @@ Route::controller(\App\Http\Controllers\AuthController::class)->group(function (
     Route::get('/generate-new-otp', 'generateNewOTP')->name('generateNewOTP');
 });
 
+Route::middleware(\App\Http\Middleware\SuperAdmin::class)->group(function () {
+    Route::controller(App\Http\Controllers\SuperAdmin\DashboardAdminController::class)->group(function () {
+        Route::get('/super-admin/dashboard', 'index')->name('superAdmin_dashboard');
+    });
+
+    Route::controller(\App\Http\Controllers\SuperAdmin\PembayaranAdminController::class)->group(function () {
+        Route::get('/super-admin/list-pembayaran', 'index')->name('superAdmin_pembayaran');
+        Route::get('/super-admin/pembayaran/{nomorPembayaran}', 'detail');
+        Route::get('/super-admin/pembayaran/verifikasi-pembayaran/{nomorPembayaran}', 'verifikasiPembayaran');
+    });
+
+    Route::controller(\App\Http\Controllers\SuperAdmin\OutletAdminController::class)->group(function () {
+        Route::get('/super-admin/list-outlet', 'index')->name('superAdmin_outlet');
+    });
+
+    Route::controller(\App\Http\Controllers\SuperAdmin\PelangganAdminController::class)->group(function () {
+        Route::get('/super-admin/user', 'index')->name('superAdmin_user');
+    });
+});
+
 Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
     Route::controller(\App\Http\Controllers\DashboardController::class)->group(function () {
         Route::get('/dashboard', 'index')->name('dashboard');

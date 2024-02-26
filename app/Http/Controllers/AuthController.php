@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\SuperAdmin\DashboardAdminController;
 use App\Http\services\HitApiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -29,19 +30,23 @@ class AuthController extends Controller
             Session::put("data_user", $login->data);
             Session::put("token", $login->data->token);
 
-            // Get Toko
-            if ($login->data->role == "owner") {
-                $toko = $this->hitApiService->GET('api/toko/user/'.$login->data->id, []);
-                Session::put('toko', $toko->data[0]);
-                if ($login->data->status != "active") {
-                    return redirect()->to(route('verifikasiOtp'));
-                }
+            if ($login->data->role == "admin") {
+                return redirect()->action([DashboardAdminController::class, 'index']);
             } else {
-                $toko = $this->hitApiService->GET('api/toko/pegawai/'.$login->data->id, []);
-                Session::put('toko', $toko->data->toko);
-            }
+                // Get Toko
+                if ($login->data->role == "owner") {
+                    $toko = $this->hitApiService->GET('api/toko/user/'.$login->data->id, []);
+                    Session::put('toko', $toko->data[0]);
+                    if ($login->data->status != "active") {
+                        return redirect()->to(route('verifikasiOtp'));
+                    }
+                } else {
+                    $toko = $this->hitApiService->GET('api/toko/pegawai/'.$login->data->id, []);
+                    Session::put('toko', $toko->data->toko);
+                }
 
-            return redirect()->action([DashboardController::class, 'index']);
+                return redirect()->action([DashboardController::class, 'index']);
+            }
         } else {
             Session::flash("error", "Login Gagal, silahkan cek no hp atau password anda");
             return back();

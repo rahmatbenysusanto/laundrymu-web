@@ -268,7 +268,7 @@
                                         <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                                         <span class="text-start ms-xl-2">
                                             <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Session::get('data_user')->nama }}</span>
-                                            <span class="d-none d-xl-block ms-1 fs-13 text-muted user-name-sub-text">{{ Session::get('toko')->nama }}</span>
+                                            <span class="d-none d-xl-block ms-1 fs-13 text-muted user-name-sub-text">{{ Session::get('data_user')->role }}</span>
                                         </span>
                                     </span>
                         </button>
@@ -432,7 +432,7 @@
 
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link menu-link {{ $title == "dashboard" ? "active" : "" }}">
+                        <a href="{{ route('superAdmin_dashboard') }}" class="nav-link menu-link {{ $title == "dashboard" ? "active" : "" }}">
                             <i class="bi bi-speedometer2"></i>
                             <span data-key="t-dashboard">Dashboard</span>
                         </a>
@@ -440,118 +440,27 @@
 
                     <li class="menu-title"><span data-key="t-menu">Transaksi</span></li>
                     <li class="nav-item">
-                        <a href="{{ route('buatTransaksi') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
+                        <a href="{{ route('superAdmin_pembayaran') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
                             <i class="bi bi-clipboard-plus"></i>
-                            <span data-key="t-dashboard">Buat Transaksi</span>
+                            <span data-key="t-dashboard">List Pembayaran</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('listTransaksi') }}" class="nav-link menu-link {{ $title == "list transaksi" ? "active" : "" }}"> <i class="bi bi-clipboard2-data"></i> <span data-key="t-dashboard">List Transaksi</span> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('historiTransaksi') }}" class="nav-link menu-link {{ $title == "histori transaksi" ? "active" : "" }}"> <i class="bi bi-journal-text"></i> <span data-key="t-dashboard">Histori Transaksi</span> </a>
-                    </li>
-
-                    <li class="menu-title"><span data-key="t-menu">Lainnya</span></li>
-                    <li class="nav-item">
-                        <a href="{{ route('layanan') }}" class="nav-link menu-link {{ $title == "layanan" ? "active" : "" }}">
-                            <i class="ri-t-shirt-air-line"></i>
-                            <span data-key="t-dashboard">Layanan</span>
+                        <a href="{{ route('superAdmin_user') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
+                            <i class="bi bi-people"></i>
+                            <span data-key="t-dashboard">List User</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('parfum') }}" class="nav-link menu-link {{ $title == "parfum" ? "active" : "" }}">
-                            <i class="bx bx-spray-can"></i>
-                            <span data-key="t-dashboard">Parfum</span>
+                        <a href="{{ route('superAdmin_outlet') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
+                            <i class="bi bi-house"></i>
+                            <span data-key="t-dashboard">List Outlet</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('diskon') }}" class="nav-link menu-link {{ $title == "diskon" ? "active" : "" }}">
-                            <i class="mdi mdi-sale"></i>
-                            <span data-key="t-dashboard">Diskon</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pelanggan') }}" class="nav-link menu-link {{ $title == "pelanggan" ? "active" : "" }}">
-                            <i class="bi bi-person-video"></i>
-                            <span data-key="t-dashboard">Pelanggan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pembayaran') }}" class="nav-link menu-link {{ $title == "pembayaran" ? "active" : "" }}">
-                            <i class="bi bi-cash-stack"></i>
-                            <span data-key="t-dashboard">Pembayaran</span>
-                        </a>
-                    </li>
-
-                    <li class="menu-title"><span data-key="t-menu">Laporan</span></li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
-                            <i class="bi bi-graph-up"></i><span data-key="t-multi-level">Laporan Laundry</span>
-                        </a>
-                        <div class="collapse menu-dropdown {{ $title == "laporan pelanggan" ? "show" : "" }} {{ $title == "laporan transaksi" ? "show" : "" }}" id="sidebarMultilevel">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan transaksi" ? "active" : "" }}"> Laporan Transaksi </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Laporan Pelanggan </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('laporanTransaksi') }}" class="nav-link {{ $title == "laporan pelanggan" ? "active" : "" }}"> Laporan Pembayaran </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    @if(Session::get('data_user')->role == "owner")
-                        <li class="menu-title"><span data-key="t-menu">Pengaturan</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#pegawaiMenuBar" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="pegawaiMenuBar">
-                                <i class="bi bi-people"></i><span data-key="t-multi-level">Pegawai</span>
-                            </a>
-                            <div class="collapse menu-dropdown {{ $title == "pegawai" ? "show" : "" }} {{ $title == "absensi pegawai" ? "show" : "" }} {{ $title == "gaji pegawai" ? "show" : "" }}" id="pegawaiMenuBar">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('pegawai') }}" class="nav-link {{ $title == "pegawai" ? "active" : "" }}"> Daftar Pegawai </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('absensiPegawai') }}" class="nav-link {{ $title == "absensi pegawai" ? "active" : "" }}"> Absensi Pegawai </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('gajiPegawai') }}" class="nav-link {{ $title == "gaji pegawai" ? "active" : "" }}"> Gaji Pegawai </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#outletMenuBar" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="outletMenuBar">
-                                <i class="bi bi-house"></i><span data-key="t-multi-level">Outlet</span>
-                            </a>
-                            <div class="collapse menu-dropdown {{ $title == "outlet" ? "show" : "" }} {{ $title == "pembayaran outlet" ? "show" : "" }}" id="outletMenuBar">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('outlet') }}" class="nav-link {{ $title == "outlet" ? "active" : "" }}"> Daftar Outlet </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('historiPembayaran') }}" class="nav-link {{ $title == "pembayaran outlet" ? "active" : "" }}"> Pembayaran </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    @endif
-
-                    <li class="menu-title"><span data-key="t-menu">Bantuan</span></li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link menu-link">
+                        <a href="{{ route('buatTransaksi') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
                             <i class="bi bi-chat-dots"></i>
-                            <span data-key="t-dashboard">Live Chat</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link menu-link">
-                            <i class="bi bi-question-circle"></i>
-                            <span data-key="t-dashboard">FAQ</span>
+                            <span data-key="t-dashboard">Chat Customer</span>
                         </a>
                     </li>
                 </ul>
