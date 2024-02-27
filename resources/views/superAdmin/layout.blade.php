@@ -440,19 +440,19 @@
 
                     <li class="menu-title"><span data-key="t-menu">Transaksi</span></li>
                     <li class="nav-item">
-                        <a href="{{ route('superAdmin_pembayaran') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
+                        <a href="{{ route('superAdmin_pembayaran') }}" class="nav-link menu-link {{ $title == "pembayaran" ? "active" : "" }}">
                             <i class="bi bi-clipboard-plus"></i>
                             <span data-key="t-dashboard">List Pembayaran</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('superAdmin_user') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
+                        <a href="{{ route('superAdmin_user') }}" class="nav-link menu-link {{ $title == "pelanggan" ? "active" : "" }}">
                             <i class="bi bi-people"></i>
                             <span data-key="t-dashboard">List User</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('superAdmin_outlet') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
+                        <a href="{{ route('superAdmin_outlet') }}" class="nav-link menu-link {{ $title == "outlet" ? "active" : "" }}">
                             <i class="bi bi-house"></i>
                             <span data-key="t-dashboard">List Outlet</span>
                         </a>
@@ -461,6 +461,20 @@
                         <a href="{{ route('buatTransaksi') }}" class="nav-link menu-link {{ $title == "buat transaksi" ? "active" : "" }}">
                             <i class="bi bi-chat-dots"></i>
                             <span data-key="t-dashboard">Chat Customer</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-title"><span data-key="t-menu">Artikel</span></li>
+                    <li class="nav-item">
+                        <a href="{{ route('buatArtikel') }}" class="nav-link menu-link {{ $title == "buat artikel" ? "active" : "" }}">
+                            <i class="bi bi-clipboard-plus"></i>
+                            <span data-key="t-dashboard">Buat Artikel</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('artikel') }}" class="nav-link menu-link {{ $title == "artikel" ? "active" : "" }}">
+                            <i class="bi bi-clipboard-plus"></i>
+                            <span data-key="t-dashboard">List Artikel</span>
                         </a>
                     </li>
                 </ul>

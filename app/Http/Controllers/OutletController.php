@@ -24,7 +24,6 @@ class OutletController extends Controller
         $outletId = $request->id;
         $dataOutlet = $this->hitApiService->GET('api/toko/user/'.Session::get('data_user')->id, []);
 
-        Log::info('tes');
         foreach ($dataOutlet->data as $outlet) {
             if ($outletId == $outlet->id) {
                 Session::put('toko', $outlet);
@@ -165,8 +164,6 @@ class OutletController extends Controller
             'id'    => $request->post('pembayaran_id'),
             'image' => $imageName
         ]);
-
-        Log::info(json_encode($result));
 
         if (isset($result) && $result->status) {
             Session::flash('success', 'Upload bukti pembayaran berhasil');

@@ -42,6 +42,12 @@ Route::middleware(\App\Http\Middleware\SuperAdmin::class)->group(function () {
     Route::controller(\App\Http\Controllers\SuperAdmin\PelangganAdminController::class)->group(function () {
         Route::get('/super-admin/user', 'index')->name('superAdmin_user');
     });
+
+    Route::controller(\App\Http\Controllers\SuperAdmin\ArtikelController::class)->group(function () {
+        Route::get('/list-artikel', 'list')->name('artikel');
+        Route::get('/buat-artikel', 'buatArtikel')->name('buatArtikel');
+        Route::post('/proses-buat-artikel', 'create')->name('prosesBuatArtikel');
+    });
 });
 
 Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {

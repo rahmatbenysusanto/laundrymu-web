@@ -25,7 +25,7 @@ class PembayaranAdminController extends Controller
         if ($dataPembayaran->data != null) {
             $pembayaran = $dataPembayaran->data;
 
-            $title = "pembayaran outlet";
+            $title = "pembayaran";
             return view('superAdmin.pembayaran.detail', compact('title', 'pembayaran'));
         } else {
             Session::flash('error', 'Pembayaran tidak ditemukan');
